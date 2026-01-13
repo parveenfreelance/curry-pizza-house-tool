@@ -11,12 +11,14 @@ st.title("CurryPizzaHouse - Manual Store/Price Entry")
 
 store = st.text_input("Store Name")
 location = st.text_input("Location")
-price = st.number_input("Price")
+price = st.number_input("Price", min_value=0.01, step=0.01)
 order_date = st.date_input("Date", value=date.today())
 
 if st.button("Submit"):
-    if not store or not location or price:
-        st.error("Store, Price and Location required")
+    if not store.strip() or not location.strip():
+        st.error("Store and Location are required")
+    elif price <= 0:
+        st.error("Price must be greater than 0")
     else:
         rows = [{
             "store": store,
@@ -25,6 +27,7 @@ if st.button("Submit"):
             "order_date": order_date.isoformat(),
             "created_at": datetime.utcnow().isoformat()
         }]
+
         errors = client.insert_rows_json(TABLE_ID, rows)
         if errors:
             st.error(errors)
