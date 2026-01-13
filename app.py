@@ -11,7 +11,7 @@ st.title("CurryPizzaHouse - Manual Store/Price Entry")
 
 store = st.text_input("Store Name")
 location = st.text_input("Location")
-price = st.number_input("Price", min_value=0.01, step=0.01)
+price = st.number_input("Price", min_value=1, step=1)
 order_date = st.date_input("Date", value=date.today())
 
 if st.button("Submit"):
