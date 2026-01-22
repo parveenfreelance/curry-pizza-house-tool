@@ -66,9 +66,23 @@ STORE_LIST = [
     "Mountain House"
 ]
 
+# Platform list
+PLATFORM_LIST = [
+    "Toast",
+    "DoorDash",
+    "OLO",
+    "UberEats",
+    "GrubHub",
+    "EzCaters",
+    "SnackPass",
+    "Forkable",
+    "Chowmill",
+    "Waiters",
+    "Foodja"
+]
 # Inputs
 store = st.selectbox("Store Name", STORE_LIST)
-platform = st.text_input("Platform Name")
+platform = st.selectbox("Platform Name", PLATFORM_LIST)
 price = st.number_input("Price", min_value=1, step=1)
 
 start_date = st.date_input("Start Date", value=date.today())
